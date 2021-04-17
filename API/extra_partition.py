@@ -95,5 +95,9 @@ for idx, box in enumerate(box_rect):
     cv2.putText(blank_image, str(idx), (x, y), cv2.FONT_HERSHEY_SIMPLEX,
                 0.4, (0, 0, 255),
                 1)
+
+
 # cv2.imshow('blank_image', blank_image)
 # cv2.waitKey()
+def predict(image):
+    return image
