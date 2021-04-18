@@ -11,6 +11,7 @@ import {
 import MainScreen from "@app/screens/app/MainScreen";
 import AddScreen from "@app/screens/app/AddScreen";
 import ActionScreen from "@app/screens/app/ActionScreen";
+import ResultScreen from "@app/screens/app/ResultScreen";
 
 const Auth = createStackNavigator(
   {
@@ -23,7 +24,8 @@ const AppStack = createStackNavigator(
   {
     [SCREEN_ROUTER_APP.MAIN]: MainScreen,
     [SCREEN_ROUTER_APP.ADD]: AddScreen,
-    [SCREEN_ROUTER_APP.ACTION]: ActionScreen
+    [SCREEN_ROUTER_APP.ACTION]: ActionScreen,
+    [SCREEN_ROUTER_APP.RESULT]: ResultScreen
   },
   { headerMode: "none", initialRouteName: SCREEN_ROUTER_APP.MAIN }
 );

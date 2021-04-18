@@ -9,7 +9,7 @@ module.exports = {
   SCREEN_ROUTER_APP: {
     MAIN: "MainScreen",
     ADD: "AddScreen",
-    EXPORT: "ExportScreen",
+    RESULT: "ResultScreen",
     ACTION: "ActionScreen"
   },
   SPLASH: "Splash",

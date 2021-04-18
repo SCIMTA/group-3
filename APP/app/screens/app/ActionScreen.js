@@ -8,11 +8,19 @@ import { TouchableOpacity } from "react-native";
 import { colors } from "@app/constants/Theme";
 import { RNCamera } from "react-native-camera";
 import { useRef } from "react";
+import NavigationUtil from "@app/navigation/NavigationUtil";
+import { SCREEN_ROUTER_APP } from "@app/constants/Constant";
+import reactotron from "reactotron-react-native";
 const ActionScreen = props => {
   const camera = useRef(null);
+  const { answer } = props.navigation.state.params;
+  reactotron.log(answer);
   useEffect(() => {}, []);
   const callApiPredict = () => {
     // camera.current
+    NavigationUtil.navigate(SCREEN_ROUTER_APP.RESULT, {
+      answer
+    });
   };
   const QR_BOX_SIZE_WIDTH = width * 0.6;
   const QR_BOX_SIZE_HEIGHT = height * 0.42;

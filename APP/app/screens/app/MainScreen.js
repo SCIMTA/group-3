@@ -21,7 +21,6 @@ const MainScreen = props => {
     const data = await AsyncStorage.getItem("data");
     if (!data) AsyncStorage.setItem("data", JSON.stringify([]));
     else setData(JSON.parse(data));
-    reactotron.log(data);
   };
   const [numQuestion, setNumQuestion] = useState("30");
   useEffect(() => {
@@ -94,10 +93,9 @@ const MainScreen = props => {
             renderItem={({ item, index }) => (
               <TouchableOpacity
                 onPress={() => {
-                  NavigationUtil.navigate(
-                    SCREEN_ROUTER_APP.ACTION,
-                    item.answer
-                  );
+                  NavigationUtil.navigate(SCREEN_ROUTER_APP.ACTION, {
+                    answer: item.answer
+                  });
                 }}
                 style={{
                   backgroundColor: colors.primary2,
