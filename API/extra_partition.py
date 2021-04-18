@@ -140,8 +140,8 @@ def predict(img, answer):
                 point += 1
             else:
                 wrong[index] = {
-                    "T": answer[index],
-                    "F": values[index]
+                    "correct": answer[index],
+                    "incorrect": values[index]
                 }
 
         return on_success({

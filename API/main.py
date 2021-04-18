@@ -1,9 +1,7 @@
-from typing import Optional
-
-from fastapi import FastAPI, Header, Form, UploadFile, File
-from fastapi.responses import FileResponse
-import numpy as np
 import cv2
+import numpy as np
+from fastapi import FastAPI, Form, UploadFile, File
+
 from extra_partition import predict
 
 app = FastAPI(docs_url="/group3", redoc_url=None)
