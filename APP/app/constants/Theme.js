@@ -5,6 +5,7 @@ const dimension = ({ width, height } = Dimensions.get("window"));
 const colors = {
   white: "#ffffff",
   primary: "#B57EDC",
+  primary2: "#e39a24",
   primaryDark: "#7e5799",
   bottombarBg: "#fafafa",
   headerColor: "#B57EDC",

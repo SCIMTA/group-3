@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import ScreenComponent from "@app/components/ScreenComponent";
 import { StyleSheet } from "react-native";
-import { callAPIHook } from "@app/utils/CallApiHelper";
 import { useEffect } from "react";
 import { View } from "react-native";
 import { TouchableOpacity } from "react-native";
@@ -10,117 +9,124 @@ import WText from "@app/components/WText";
 import { colors } from "@app/constants/Theme";
 import InputText from "@app/components/InputText";
 import R from "@app/assets/R";
-import imagePickerHelper from "@app/utils/ImagePickerHelper";
-import FastImg from "@app/components/FastImage";
-import { upload_person } from "@api";
 import { FlatList } from "react-native";
-import reactotron from "@app/reactotron/ReactotronConfig";
 import NavigationUtil from "@app/navigation/NavigationUtil";
 import { SCREEN_ROUTER_APP } from "@app/constants/Constant";
-import { showMessages } from "@app/utils/AlertHelper";
+import AsyncStorage from "@react-native-community/async-storage";
 
 const AddScreen = props => {
-  const [images, setImages] = useState([]);
+  const { numQuestion, getData } = props.navigation.state.params;
   const [name, setName] = useState("");
-  const callApiAddPerson = () => {
-    callAPIHook({
-      API: upload_person,
-      formdata: {
-        name,
-        files: images
-          .filter(e => !!e)
-          .map((e, i) => ({
-            uri: e,
-            name: e.split("/").pop(),
-            type: "image/jpeg",
-            filename: new Date().getTime() + `_${i}.jpeg`
-          })),
-        train_option: 1
-      },
-      onSuccess: res => {
-        showMessages("", "Đã thêm " + name);
-        NavigationUtil.navigate(SCREEN_ROUTER_APP.MAIN);
-      },
-      onError: err => {
-        console.log(err);
-      }
+  const callApiAddAnswer = async () => {
+    let oldData = JSON.parse(await AsyncStorage.getItem("data"));
+    oldData.push({
+      title: name,
+      answer: answer.join("")
     });
+    AsyncStorage.setItem("data", JSON.stringify(oldData));
+    if (getData) getData();
+    NavigationUtil.navigate(SCREEN_ROUTER_APP.MAIN);
   };
-
+  const [answer, setAnswer] = useState(
+    Array.from({ length: numQuestion || 30 }, (v, i) => `x`)
+  );
   useEffect(() => {}, []);
 
-  reactotron.log(images);
+  const numToText = n => {
+    switch (n) {
+      case 1:
+        return "A";
+      case 2:
+        return "B";
+      case 3:
+        return "C";
+      case 4:
+        return "D";
+    }
+  };
+  const isValid = name.length > 0 && !answer.includes("x");
   return (
     <ScreenComponent
       back
-      titleHeader="Thêm"
+      titleHeader="Tạo đề"
       renderView={
         <>
           <InputText
             value={name}
             onChangeText={setName}
-            icon={R.images.ic_user}
-            placeholder="Tên nhân viên"
+            icon={R.images.ic_paper}
+            placeholder="Tên đề thi"
           />
-
-          <View
-            style={{ marginVertical: 30 }}
-            children={[1, 4].map((e, i) => (
+          <FlatList
+            data={answer}
+            keyExtractor={(e, i) => `${i}`}
+            renderItem={({ index, item }) => (
               <View
-                key={i}
-                style={{ flexDirection: "row" }}
-                children={[0, 1, 2].map((r, j) => (
-                  <TouchableOpacity
-                    key={j}
-                    onPress={() => {
-                      imagePickerHelper(res => {
-                        images[e + r] = res;
-                        setImages([...images]);
-                      });
-                    }}
-                    style={{
-                      margin: 5,
-                      borderRadius: 10,
-                      borderWidth: 0.5,
-                      flex: 1,
-                      borderColor: colors.primary
-                    }}
-                    children={
-                      <FastImg
-                        resizeMode={!images[e + r] ? "center" : "cover"}
+                style={{ flexDirection: "row", margin: 15 }}
+                children={
+                  <>
+                    <WText
+                      style={{ flex: 1, textAlignVertical: "center" }}
+                      children={`Câu ${index + 1}:`}
+                    />
+                    {[1, 2, 3, 4].map(e => (
+                      <TouchableOpacity
                         style={{
-                          aspectRatio: 1,
-                          borderRadius: 10
+                          flex: 1,
+                          alignItems: "center"
                         }}
-                        tintColor={!images[e + r] ? colors.primary : null}
-                        source={
-                          !images[e + r]
-                            ? R.images.ic_face
-                            : { uri: images[e + r] }
+                        onPress={() => {
+                          answer[index] = numToText(e);
+                          setAnswer([...answer]);
+                        }}
+                        key={e}
+                        children={
+                          <WText
+                            style={{
+                              borderWidth: 1,
+                              borderRadius: 60,
+                              width: 30,
+                              aspectRatio: 1,
+                              textAlign: "center",
+                              textAlignVertical: "center",
+                              color:
+                                answer[index] == numToText(e)
+                                  ? colors.white
+                                  : "black",
+                              backgroundColor:
+                                answer[index] == numToText(e)
+                                  ? colors.primary
+                                  : "white",
+                              borderColor:
+                                answer[index] == numToText(e)
+                                  ? colors.primary2
+                                  : "black"
+                            }}
+                            children={numToText(e)}
+                          />
                         }
                       />
-                    }
-                  />
-                ))}
+                    ))}
+                  </>
+                }
               />
-            ))}
+            )}
           />
-
           <TouchableOpacity
-            onPress={callApiAddPerson}
+            onPress={callApiAddAnswer}
             style={{
-              backgroundColor: colors.primary,
-              padding: 15,
-              alignSelf: "center",
-              borderRadius: 5
+              backgroundColor: isValid ? colors.primary : colors.inactive,
+              padding: 15
             }}
+            disabled={!isValid}
             children={
               <WText
                 style={{
-                  paddingHorizontal: 30
+                  textAlign: "center"
                 }}
+                font="bold16"
                 color={colors.white}
-                children="Xác nhận"
+                children={"Tạo đề".toUpperCase()}
               />
             }
           />

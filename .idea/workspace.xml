@@ -1,52 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e0a20c6-be1b-4412-aab6-dba35b6eb77c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/group_3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_101_den_110.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_111_den_120.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_11_den_20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_1_den_10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_21_den_30.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_31_den_40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_41_den_50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_51_den_60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_61_den_70.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_71_den_80.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_81_den_90.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/cau_91_den_100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/ma_de.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/sbd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra_partition.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_use.png" beforeDir="false" />
+    <list default="true" id="d0f19846-6fe9-4962-b1c0-dd5b8263f53d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/APP/android/app/src/main/java/com/sci/mark/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APP/android/app/src/main/java/com/sci/mark/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/.idea/group_3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/extra/cau_11_den_20.png" beforeDir="false" afterPath="$PROJECT_DIR$/API/extra/cau_11_den_20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/orc.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/orc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APP/app/assets/imagesAsset.js" beforeDir="false" afterPath="$PROJECT_DIR$/APP/app/assets/imagesAsset.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APP/app/constants/Theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/APP/app/constants/Theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APP/app/screens/app/ActionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/APP/app/screens/app/ActionScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APP/app/screens/app/MainScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/APP/app/screens/app/MainScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1peywnQhu62ODHE3jo7yDrIZEQL" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1rKMkSSrZ2PkLdnyi3WEYxZbwsA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -55,66 +36,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\DATA\PROJECT\MTA\group_3" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\PROJECT\python\group_3" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Python.orc (1)">
-    <configuration name="extra_partition" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="group_3" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/extra_partition.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="extra_partition" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="group_3" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\PROJECT\python\group_3\extra_partition.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="orc (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="orc" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="group_3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -136,76 +63,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="orc" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="group_3" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/orc.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Python.orc" />
-      <item itemvalue="Python.extra_partition" />
-      <item itemvalue="Python.orc (1)" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.orc (1)" />
         <item itemvalue="Python.orc" />
-        <item itemvalue="Python.extra_partition" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6e0a20c6-be1b-4412-aab6-dba35b6eb77c" name="Default Changelist" comment="" />
-      <created>1615558091482</created>
+      <changelist id="d0f19846-6fe9-4962-b1c0-dd5b8263f53d" name="Default Changelist" comment="" />
+      <created>1618720476686</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1615558091482</updated>
-      <workItem from="1615558115244" duration="8942000" />
-      <workItem from="1615706644687" duration="5067000" />
-      <workItem from="1615711822414" duration="176000" />
-      <workItem from="1616142063506" duration="4000" />
-      <workItem from="1618630453616" duration="2007000" />
+      <updated>1618720476686</updated>
+      <workItem from="1618720480489" duration="243000" />
+      <workItem from="1618720818196" duration="793000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/group_3$extra_partition__1_.coverage" NAME="extra_partition Coverage Results" MODIFIED="1615709841799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/group_3$main.coverage" NAME="extra_partition Coverage Results" MODIFIED="1615708464539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/group_3$orc__1_.coverage" NAME="orc (1) Coverage Results" MODIFIED="1618632476112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/API" />
-    <SUITE FILE_PATH="coverage/group_3$orc.coverage" NAME="orc Coverage Results" MODIFIED="1618632469826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/group_3$orc.coverage" NAME="orc Coverage Results" MODIFIED="1618720870413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/API" />
   </component>
 </project>
