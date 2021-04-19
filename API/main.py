@@ -10,6 +10,7 @@ app = FastAPI(docs_url="/group3", redoc_url=None)
 @app.post("/predict")
 async def _predict(image: UploadFile = File(...), answer: str = Form('')):
     img = await get_mat_image(image)
+    cv2.imwrite("cache.png", img)
     return predict(img, answer)
 
 
