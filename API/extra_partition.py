@@ -13,7 +13,8 @@ def extra_partition(img):
     ret, thresh = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
 
     image = cv2.resize(thresh, (width, height))
-
+    # cv2.imshow("blank_image", image)
+    # cv2.waitKey()
     blank_image = np.zeros((height, width, 3), np.uint8)
     contours, _ = cv2.findContours(image, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
     box_rect = []
@@ -23,6 +24,7 @@ def extra_partition(img):
         if min_area < area < width and int(w / h) < 3:
             if w * h - area < w * h * 0.23:
                 box_rect.append((x, y, w, h))
+
 
     # sắp xếp theo diện tích
     area_box = sorted(box_rect, key=lambda e: -e[2] * e[3])
@@ -58,8 +60,7 @@ def extra_partition(img):
     #     x, y, w, h = box
     #     cv2.rectangle(blank_image, (x, y), (x + w, y + h), (0, 255, 0), thickness=1)
     #     cv2.putText(blank_image, str(idx), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), thickness=1)
-    #     cv2.imshow("blank_image", blank_image)
-    #     cv2.waitKey()
+
     def gen_x_y(p1, p2):
         return list_box[p1].x, list_box[p1].y, list_box[p2].x, list_box[p2].y
 

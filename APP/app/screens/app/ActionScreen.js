@@ -39,9 +39,9 @@ const ActionScreen = props => {
       });
     });
   };
-  const QR_BOX_SIZE_WIDTH = width * 0.6;
-  const QR_BOX_SIZE_HEIGHT = height * 0.42;
-  const verticalHeight = (height - QR_BOX_SIZE_HEIGHT) / 3;
+  const QR_BOX_SIZE_WIDTH = width * 0.9;
+  const QR_BOX_SIZE_HEIGHT = height * 0.7;
+  const verticalHeight = (height - QR_BOX_SIZE_HEIGHT) / 4;
   const verticalWidth = width;
   const horizontalHeight = QR_BOX_SIZE_HEIGHT;
   const horizontalWidth = (width - QR_BOX_SIZE_WIDTH) / 2;
@@ -52,49 +52,49 @@ const ActionScreen = props => {
       renderView={
         <>
           <RNCamera
-            children={
-              <View style={{ flex: 1 }}>
-                <View
-                  style={{
-                    width: verticalWidth,
-                    height: verticalHeight,
-                    backgroundColor: "rgba(0,0,0,0.5)"
-                  }}
-                />
+            // children={
+            //   <View style={{ flex: 1 }}>
+            //     <View
+            //       style={{
+            //         width: verticalWidth,
+            //         height: verticalHeight,
+            //         backgroundColor: "rgba(0,0,0,0.5)"
+            //       }}
+            //     />
 
-                <View
-                  style={{ height: QR_BOX_SIZE_HEIGHT, flexDirection: "row" }}
-                >
-                  <View
-                    style={{
-                      width: horizontalWidth,
-                      height: horizontalHeight,
-                      backgroundColor: "rgba(0,0,0,0.5)"
-                    }}
-                  />
-                  <View
-                    style={{
-                      width: QR_BOX_SIZE_WIDTH,
-                      height: QR_BOX_SIZE_HEIGHT
-                    }}
-                  />
-                  <View
-                    style={{
-                      width: horizontalWidth,
-                      height: horizontalHeight,
-                      backgroundColor: "rgba(0,0,0,0.5)"
-                    }}
-                  />
-                </View>
-                <View
-                  style={{
-                    width: verticalWidth,
-                    height: verticalHeight,
-                    backgroundColor: "rgba(0,0,0,0.5)"
-                  }}
-                />
-              </View>
-            }
+            //     <View
+            //       style={{ height: QR_BOX_SIZE_HEIGHT, flexDirection: "row" }}
+            //     >
+            //       <View
+            //         style={{
+            //           width: horizontalWidth,
+            //           height: horizontalHeight,
+            //           backgroundColor: "rgba(0,0,0,0.5)"
+            //         }}
+            //       />
+            //       <View
+            //         style={{
+            //           width: QR_BOX_SIZE_WIDTH,
+            //           height: QR_BOX_SIZE_HEIGHT
+            //         }}
+            //       />
+            //       <View
+            //         style={{
+            //           width: horizontalWidth,
+            //           height: horizontalHeight,
+            //           backgroundColor: "rgba(0,0,0,0.5)"
+            //         }}
+            //       />
+            //     </View>
+            //     <View
+            //       style={{
+            //         width: verticalWidth,
+            //         height: verticalHeight,
+            //         backgroundColor: "rgba(0,0,0,0.5)"
+            //       }}
+            //     />
+            //   </View>
+            // }
             ref={camera}
             type="back"
             style={{ flex: 6 }}
