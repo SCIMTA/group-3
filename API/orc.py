@@ -17,7 +17,6 @@ def extra_info(image, column, row):
             ret, thresh = cv2.threshold(item, 127, 255, cv2.THRESH_BINARY)
             arr = np.array(thresh)
             unique, count = np.unique(arr, return_counts=True)
-
             if len(count) == 2 and count[0] > 50:
                 text.append(
                     (str(i), str(j))

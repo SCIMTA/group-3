@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fbf89a0-6ccf-40e8-b962-ac2a82597f00" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/group_3_start.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/API.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extra_partition.py" beforeDir="false" afterPath="$PROJECT_DIR$/extra_partition.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orc.py" beforeDir="false" afterPath="$PROJECT_DIR$/orc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APP/app/constants/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../APP/app/constants/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APP/app/screens/app/ActionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../APP/app/screens/app/ActionScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APP/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../APP/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,11 +33,46 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\DATA\PROJECT\MTA\group_3\API" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="extra_partition" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/extra_partition.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.extra_partition" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -36,7 +83,9 @@
       <option name="presentableId" value="Default" />
       <updated>1618730055927</updated>
       <workItem from="1618730057564" duration="5000" />
-      <workItem from="1618730076409" duration="4526000" />
+      <workItem from="1618730076409" duration="14731000" />
+      <workItem from="1618835530534" duration="91000" />
+      <workItem from="1618835678881" duration="1279000" />
     </task>
     <servers />
   </component>

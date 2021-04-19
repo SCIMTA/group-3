@@ -11,15 +11,32 @@ import { useRef } from "react";
 import NavigationUtil from "@app/navigation/NavigationUtil";
 import { SCREEN_ROUTER_APP } from "@app/constants/Constant";
 import reactotron from "reactotron-react-native";
+import { callAPIHook } from "@app/utils/CallApiHelper";
+import { predict } from "@api";
 const ActionScreen = props => {
   const camera = useRef(null);
   const { answer } = props.navigation.state.params;
   reactotron.log(answer);
   useEffect(() => {}, []);
   const callApiPredict = () => {
-    // camera.current
-    NavigationUtil.navigate(SCREEN_ROUTER_APP.RESULT, {
-      answer
+    camera.current.takePictureAsync({ width: 1000 }).then(res => {
+      callAPIHook({
+        API: predict,
+        formdata: {
+          image: {
+            uri: res.uri,
+            name: res.uri.split("/").pop(),
+            type: "image/jpeg",
+            filename: new Date().getTime() + `.jpeg`
+          },
+          answer
+        },
+        onSuccess: res => {
+          NavigationUtil.navigate(SCREEN_ROUTER_APP.RESULT, {
+            answer
+          });
+        }
+      });
     });
   };
   const QR_BOX_SIZE_WIDTH = width * 0.6;
@@ -79,7 +96,7 @@ const ActionScreen = props => {
               </View>
             }
             ref={camera}
-            type="front"
+            type="back"
             style={{ flex: 6 }}
           />
           <View

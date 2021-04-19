@@ -6,7 +6,7 @@ const { AsyncStorage } = require("react-native");
 
 const createAPI = () => {
   const APIInstant = require("axios").default.create();
-  APIInstant.defaults.baseURL = "http://128.199.108.177:8002/";
+  APIInstant.defaults.baseURL = "http://128.199.108.177:8003/";
   APIInstant.defaults.timeout = 20000;
   APIInstant.defaults.headers = {
     "Content-Type": "application/json"
@@ -43,8 +43,5 @@ const handleResult = api =>
   });
 
 module.exports = {
-  login: payload => handleResult(getAPI.post(`login`, payload)),
-  upload_person: payload => handleResult(getAPI.post(`upload_person`, payload)),
-  upload_predict: payload =>
-    handleResult(getAPI.post(`upload_predict`, payload))
+  predict: payload => handleResult(getAPI.post(`predict`, payload))
 };
