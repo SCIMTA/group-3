@@ -15,7 +15,6 @@ def extra_partition(img):
     image = cv2.resize(thresh, (width, height))
     # cv2.imshow("blank_image", image)
     # cv2.waitKey()
-    cv2.imwrite('cache.png', thresh)
     blank_image = np.zeros((height, width, 3), np.uint8)
     contours, _ = cv2.findContours(image, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
     box_rect = []
