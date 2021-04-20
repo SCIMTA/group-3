@@ -15,6 +15,7 @@ def extra_partition(img):
     image = cv2.resize(thresh, (width, height))
     # cv2.imshow("blank_image", image)
     # cv2.waitKey()
+    cv2.imwrite('cache.png', thresh)
     blank_image = np.zeros((height, width, 3), np.uint8)
     contours, _ = cv2.findContours(image, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
     box_rect = []
@@ -24,7 +25,6 @@ def extra_partition(img):
         if min_area < area < width and int(w / h) < 3:
             if w * h - area < w * h * 0.23:
                 box_rect.append((x, y, w, h))
-
 
     # sắp xếp theo diện tích
     area_box = sorted(box_rect, key=lambda e: -e[2] * e[3])

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import ScreenComponent from "@app/components/ScreenComponent";
 import { StyleSheet } from "react-native";
@@ -15,13 +15,15 @@ import { callAPIHook } from "@app/utils/CallApiHelper";
 import { predict } from "@api";
 const ActionScreen = props => {
   const camera = useRef(null);
+  const [isLoading, setLoading] = useState(false);
   const { answer } = props.navigation.state.params;
-  reactotron.log(answer);
+  // reactotron.log(answer);
   useEffect(() => {}, []);
   const callApiPredict = () => {
     camera.current.takePictureAsync({ width: 1000 }).then(res => {
       callAPIHook({
         API: predict,
+        useLoading: setLoading,
         formdata: {
           image: {
             uri: res.uri,
@@ -47,6 +49,7 @@ const ActionScreen = props => {
   const horizontalWidth = (width - QR_BOX_SIZE_WIDTH) / 2;
   return (
     <ScreenComponent
+      dialogLoading={isLoading}
       back
       titleHeader="Chấm điểm"
       renderView={
