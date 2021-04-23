@@ -6,8 +6,3 @@ uvicorn
 python-multipart
 opencv-python
 numpy
-torch
-torchvision
-matplotlib
-scikit-image
-Pillow
