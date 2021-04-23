@@ -1,45 +1,65 @@
 import cv2
 import numpy as np
 
+from Point import Point
 from orc import extra_question, extra_info
 from utils import on_fail, on_success
-from Point import Point
 
 
 def extra_partition(img):
     width = 720
     height = 1018
-    min_area = width / 10
-    ret, thresh = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
+    # height = 800
 
-    image = cv2.resize(thresh, (width, height))
-    # cv2.imshow("blank_image", image)
-    # cv2.waitKey()
+    min_area = width / 10
+    image = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 45, 35)
+
+    image = cv2.resize(image, (width, height), interpolation=cv2.INTER_LINEAR)
     blank_image = np.zeros((height, width, 3), np.uint8)
-    contours, _ = cv2.findContours(image, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+    contours, _ = cv2.findContours(image, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     box_rect = []
+
     for idx, con in enumerate(contours):
         area = cv2.contourArea(con)
         x, y, w, h = cv2.boundingRect(con)
-        if min_area < area < width and int(w / h) < 3:
-            if w * h - area < w * h * 0.23:
-                box_rect.append((x, y, w, h))
+        if min_area < area < width and int(w / h) < 3 and w * h - area > w * h * 0.05:
+            box_rect.append((x, y, w, h))
 
+    mean = int(np.mean(list(map(lambda x: x[2], box_rect))))
+    for box in box_rect.copy():
+        if box[2] < mean - 2:
+            box_rect.remove(box)
+    for idx, box in enumerate(box_rect):
+        x, y, w, h = box
+        cv2.rectangle(blank_image, (x, y), (x + w, y + h), (0, 255, 0), thickness=1)
+    # cv2.imshow('image', image)
+    # cv2.imshow('blank_image', blank_image)
+    # cv2.waitKey()
     # sắp xếp theo diện tích
     area_box = sorted(box_rect, key=lambda e: -e[2] * e[3])
 
     # lấy ra 4 ô ở góc
     max_box = area_box[:4]
-
-    # lấy ra ô nhỏ còn lại
-    box_rect = area_box[4:]
-
     # sắp xếp từ trên xuống dưới
     max_box = sorted(max_box, key=lambda e: e[1])
 
     # sắp xếp từ ngang
     max_box[:2] = sorted(max_box[:2], key=lambda e: e[0])
     max_box[2:] = sorted(max_box[2:], key=lambda e: e[0])
+    p1, p2, p3, p4 = max_box
+    list_max_box = [[p1[0], p1[1]],
+                    [p2[0] + p2[2], p2[1]],
+                    [p3[0], p3[1] + p3[3]],
+                    [p4[0] + p4[2], p4[1] + p4[3]], ]
+    pst1 = np.float32(list_max_box)
+    w_b = 400
+    h_b = 600
+    pst2 = np.float32([[0, 0], [w_b, 0], [0, h_b], [w_b, h_b]])
+    matrix = cv2.getPerspectiveTransform(pst1, pst2)
+    img_out = cv2.warpPerspective(image, matrix, (w_b, h_b))
+    # cv2.imshow('', img_out)
+    # cv2.waitKey()
+    box_rect = area_box[4:]
 
     # sắp xếp từ trên xuống dưới
     box_rect = sorted(box_rect, key=lambda e: e[1])
@@ -54,11 +74,6 @@ def extra_partition(img):
 
     list_box = list(map(lambda x: Point(x[0], x[1]), box_rect))
     list_max_box_area = list(map(lambda x: Point(x[0], x[1]), max_box))
-
-    # for idx, box in enumerate(max_box):
-    #     x, y, w, h = box
-    #     cv2.rectangle(blank_image, (x, y), (x + w, y + h), (0, 255, 0), thickness=1)
-    #     cv2.putText(blank_image, str(idx), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), thickness=1)
 
     def gen_x_y(p1, p2):
         return list_box[p1].x, list_box[p1].y, list_box[p2].x, list_box[p2].y

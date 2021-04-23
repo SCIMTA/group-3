@@ -20,26 +20,31 @@ const ActionScreen = props => {
   // reactotron.log(answer);
   useEffect(() => {}, []);
   const callApiPredict = () => {
-    camera.current.takePictureAsync({ width: 1000 }).then(res => {
-      callAPIHook({
-        API: predict,
-        useLoading: setLoading,
-        formdata: {
-          image: {
-            uri: res.uri,
-            name: res.uri.split("/").pop(),
-            type: "image/jpeg",
-            filename: new Date().getTime() + `.jpeg`
-          },
-          answer
-        },
-        onSuccess: res => {
-          NavigationUtil.navigate(SCREEN_ROUTER_APP.RESULT, {
+    camera.current
+      .takePictureAsync({
+        width: 1600,
+        orientation: RNCamera.Constants.Orientation.portrait
+      })
+      .then(res => {
+        callAPIHook({
+          API: predict,
+          useLoading: setLoading,
+          formdata: {
+            image: {
+              uri: res.uri,
+              name: res.uri.split("/").pop(),
+              type: "image/jpeg",
+              filename: new Date().getTime() + `.jpeg`
+            },
             answer
-          });
-        }
+          },
+          onSuccess: res => {
+            NavigationUtil.navigate(SCREEN_ROUTER_APP.RESULT, {
+              answer
+            });
+          }
+        });
       });
-    });
   };
   const QR_BOX_SIZE_WIDTH = width * 0.9;
   const QR_BOX_SIZE_HEIGHT = height * 0.7;

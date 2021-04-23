@@ -17,3 +17,5 @@ def on_fail(message='Thất bại', status=0):
         'message': message,
         'status': status
     }
+
+
