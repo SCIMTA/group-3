@@ -52,14 +52,45 @@ def extra_partition(img):
                     [p3[0], p3[1] + p3[3]],
                     [p4[0] + p4[2], p4[1] + p4[3]], ]
     pst1 = np.float32(list_max_box)
-    w_b = 400
-    h_b = 600
+    w_b = width
+    h_b = height
     pst2 = np.float32([[0, 0], [w_b, 0], [0, h_b], [w_b, h_b]])
     matrix = cv2.getPerspectiveTransform(pst1, pst2)
     img_out = cv2.warpPerspective(image, matrix, (w_b, h_b))
+
+    #####    crop_img handle
+    blank_image = np.zeros((img_out.shape[0], img_out.shape[1], 3), np.uint8)
+    contours, _ = cv2.findContours(img_out, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    box_rect = []
+
+    for idx, con in enumerate(contours):
+        area = cv2.contourArea(con)
+        x, y, w, h = cv2.boundingRect(con)
+        if min_area < area < width and int(w / h) < 3 and w * h - area > w * h * 0.05:
+            box_rect.append((x, y, w, h))
+
+    mean = int(np.mean(list(map(lambda x: x[2], box_rect))))
+    for box in box_rect.copy():
+        if box[2] < mean - 2:
+            box_rect.remove(box)
+    for idx, box in enumerate(box_rect):
+        x, y, w, h = box
+        cv2.rectangle(blank_image, (x, y), (x + w, y + h), (0, 255, 0), thickness=1)
+    #####
     # cv2.imshow('', img_out)
     # cv2.waitKey()
-    box_rect = area_box[4:]
+
+    ##### short again
+    box_rect = sorted(box_rect, key=lambda e: -e[2] * e[3])
+
+    max_box = box_rect[:4]
+    # sắp xếp từ trên xuống dưới
+    max_box = sorted(max_box, key=lambda e: e[1])
+    max_box[:2] = sorted(max_box[:2], key=lambda e: e[0])
+    max_box[2:] = sorted(max_box[2:], key=lambda e: e[0])
+
+    box_rect = box_rect[4:]
+    #####
 
     # sắp xếp từ trên xuống dưới
     box_rect = sorted(box_rect, key=lambda e: e[1])
@@ -94,6 +125,7 @@ def extra_partition(img):
     cau_101_den_110 = list_box[11].x, list_box[11].y, list_max_box_area[3].x, list_box[15].y
     cau_111_den_120 = list_box[15].x, list_box[15].y, list_max_box_area[3].x, list_box[19].y
     # cắt ảnh
+    image = img_out
     x1, y1, x2, y2 = sbd
     img_sbd = image[y1 + 19:y2 + 3, x1 + 20:x2 - 20]
 
@@ -136,6 +168,9 @@ def extra_partition(img):
     x1, y1, x2, y2 = cau_111_den_120
     img_cau_111_den_120 = image[y1 + 19:y2, x1 + 20:x2 - 35]
 
+    # cv2.imshow('', img_ma_de)
+    # cv2.waitKey()
+
     return img_sbd, img_ma_de, img_cau_1_den_10, img_cau_11_den_20, img_cau_21_den_30, img_cau_31_den_40, img_cau_41_den_50, img_cau_51_den_60, img_cau_61_den_70, img_cau_71_den_80, img_cau_81_den_90, img_cau_91_den_100, img_cau_101_den_110, img_cau_111_den_120
 
 
@@ -149,9 +184,12 @@ def predict(img, answer):
         img_sbd, img_made, img_cau_1_den_10, img_cau_11_den_20, img_cau_21_den_30, img_cau_31_den_40, img_cau_41_den_50, img_cau_51_den_60, img_cau_61_den_70, img_cau_71_den_80, img_cau_81_den_90, img_cau_91_den_100, img_cau_101_den_110, img_cau_111_den_120 = extra_partition(
             img)
 
+        #### debug
+
         data = {}
         sbd = extra_info(img_sbd, 10, 6)
         ma_de = extra_info(img_made, 10, 3)
+
         data.update(extra_question(img_cau_1_den_10))
         if len_answer > 10:
             data.update(extra_question(img_cau_11_den_20, start_question=11))
