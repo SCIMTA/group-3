@@ -11,7 +11,7 @@
     "li": "dot_clean -n . && node generateAssetResource.js",
     "lint": "eslint .",
     "pod": "cd ios && pod install && cd .. && react-native link",
-    "re": "adb reverse tcp:9090 tcp:9090 && adb reverse tcp:19001 tcp:19001"
+    "re": "adb reverse tcp:8081 tcp:8081 && adb reverse tcp:9090 tcp:9090 && adb reverse tcp:19001 tcp:19001"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.2",

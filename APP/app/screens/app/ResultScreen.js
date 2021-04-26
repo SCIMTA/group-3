@@ -34,7 +34,6 @@ const ItemText = ({ title, value }) => {
 
 const ResultScreen = props => {
   const { answer, result } = props.navigation.state.params;
-  reactotron.log(result);
   const ma_de = result.ma_de;
   const sbd = result.sbd;
   const point = result.point;

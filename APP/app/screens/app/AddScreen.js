@@ -13,22 +13,38 @@ import { FlatList } from "react-native";
 import NavigationUtil from "@app/navigation/NavigationUtil";
 import { SCREEN_ROUTER_APP } from "@app/constants/Constant";
 import AsyncStorage from "@react-native-community/async-storage";
+import reactotron from "@app/reactotron/ReactotronConfig";
 
 const AddScreen = props => {
   const { numQuestion, getData } = props.navigation.state.params;
-  const [name, setName] = useState("");
+  const [name, setName] = useState(props.navigation.state.params.title || "");
+  const isUpdate = !!props.navigation.state.params.title;
   const callApiAddAnswer = async () => {
     let oldData = JSON.parse(await AsyncStorage.getItem("data"));
-    oldData.push({
-      title: name,
-      answer: answer.join("")
-    });
+    if (isUpdate) {
+      const id = props.navigation.state.params.id;
+      const indexValue = oldData.findIndex(e => e.id == id);
+      oldData[indexValue] = {
+        id,
+        title: name,
+        answer: answer.join("")
+      };
+    } else
+      oldData.push({
+        id: new Date().getTime() + "",
+        title: name,
+        answer: answer.join("")
+      });
+    reactotron.log(oldData);
     AsyncStorage.setItem("data", JSON.stringify(oldData));
     if (getData) getData();
     NavigationUtil.navigate(SCREEN_ROUTER_APP.MAIN);
   };
+  const asw = props.navigation.state.params.answer;
   const [answer, setAnswer] = useState(
-    Array.from({ length: numQuestion || 30 }, (v, i) => `x`)
+    !!asw
+      ? [...props.navigation.state.params.answer]
+      : Array.from({ length: numQuestion || 30 }, (v, i) => `x`)
   );
   useEffect(() => {}, []);
 
@@ -48,7 +64,7 @@ const AddScreen = props => {
   return (
     <ScreenComponent
       back
-      titleHeader="Tạo đề"
+      titleHeader={isUpdate ? "Cập nhật" : "Tạo đề"}
       renderView={
         <>
           <InputText
@@ -126,7 +142,7 @@ const AddScreen = props => {
                 }}
                 font="bold16"
                 color={colors.white}
-                children={"Tạo đề".toUpperCase()}
+                children={(isUpdate ? "Cập nhật" : "Tạo đề").toUpperCase()}
               />
             }
           />

@@ -5,8 +5,10 @@ const { API_STATUS } = require("@constant");
 const { AsyncStorage } = require("react-native");
 
 const createAPI = () => {
+  const dev = false;
+
   const APIInstant = require("axios").default.create();
-  APIInstant.defaults.baseURL = __DEV__
+  APIInstant.defaults.baseURL = dev
     ? "http://192.168.0.112:8003/"
     : "http://128.199.108.177:8003/";
   APIInstant.defaults.timeout = 20000;

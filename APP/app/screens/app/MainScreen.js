@@ -14,6 +14,7 @@ import InputText from "@app/components/InputText";
 import R from "@app/assets/R";
 import reactotron from "@app/reactotron/ReactotronConfig";
 import { RefreshControl } from "react-native";
+import { showOption } from "@app/utils/AlertHelper";
 
 const MainScreen = props => {
   const [data, setData] = useState([]);
@@ -26,7 +27,11 @@ const MainScreen = props => {
   useEffect(() => {
     getData();
   }, []);
-
+  const deleteItem = async id => {
+    let d = await AsyncStorage.getItem("data");
+    d = d.filter(e => e.id != id);
+    setData(JSON.parse(d));
+  };
   return (
     <ScreenComponent
       titleHeader="Chấm điểm trắc nghiệm"
@@ -46,9 +51,11 @@ const MainScreen = props => {
             keyboardType="number-pad"
             maxLength={3}
             onChangeText={text => {
-              let num = parseInt(text.replace(",", "").replace(".", ""));
-              if (num > 120) num = "120";
-              setNumQuestion(num);
+              if (text) {
+                let num = parseInt(text.replace(",", "").replace(".", ""));
+                if (num > 120) num = "120";
+                setNumQuestion(num);
+              }
             }}
             icon={R.images.ic_num_question}
             placeholder="Số câu, ví dụ: 30, tối đa 120 câu"
@@ -96,6 +103,24 @@ const MainScreen = props => {
                   NavigationUtil.navigate(SCREEN_ROUTER_APP.ACTION, {
                     answer: item.answer
                   });
+                }}
+                onLongPress={() => {
+                  showOption("", "", [
+                    {
+                      text: "Cập nhật",
+                      onPress: () =>
+                        NavigationUtil.navigate(SCREEN_ROUTER_APP.ADD, {
+                          ...item,
+                          getData
+                        })
+                    },
+                    {
+                      text: "Xoá",
+                      onPress: () => {
+                        deleteItem(item.id);
+                      }
+                    }
+                  ]);
                 }}
                 style={{
                   backgroundColor: colors.primary2,
