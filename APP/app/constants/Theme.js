@@ -15,7 +15,8 @@ const colors = {
   inactive: "gray",
   indicator: "#24277e",
   borderTopColor: "gainsboro",
-  red: "red"
+  red: "#ff6e6e",
+  green: "#55cf5f"
 };
 
 const sizes = {};

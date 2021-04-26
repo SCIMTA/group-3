@@ -40,14 +40,15 @@ const ActionScreen = props => {
           },
           onSuccess: res => {
             NavigationUtil.navigate(SCREEN_ROUTER_APP.RESULT, {
-              answer
+              answer,
+              result: res.data
             });
           }
         });
       });
   };
-  const QR_BOX_SIZE_WIDTH = width * 0.9;
-  const QR_BOX_SIZE_HEIGHT = height * 0.7;
+  const QR_BOX_SIZE_WIDTH = width * 0.85;
+  const QR_BOX_SIZE_HEIGHT = height * 0.6;
   const verticalHeight = (height - QR_BOX_SIZE_HEIGHT) / 4;
   const verticalWidth = width;
   const horizontalHeight = QR_BOX_SIZE_HEIGHT;
@@ -60,75 +61,77 @@ const ActionScreen = props => {
       renderView={
         <>
           <RNCamera
-            // children={
-            //   <View style={{ flex: 1 }}>
-            //     <View
-            //       style={{
-            //         width: verticalWidth,
-            //         height: verticalHeight,
-            //         backgroundColor: "rgba(0,0,0,0.5)"
-            //       }}
-            //     />
+            children={
+              <View style={{ flex: 1 }}>
+                <View
+                  style={{
+                    width: verticalWidth,
+                    height: verticalHeight,
+                    backgroundColor: "rgba(0,0,0,0.8)"
+                  }}
+                />
 
-            //     <View
-            //       style={{ height: QR_BOX_SIZE_HEIGHT, flexDirection: "row" }}
-            //     >
-            //       <View
-            //         style={{
-            //           width: horizontalWidth,
-            //           height: horizontalHeight,
-            //           backgroundColor: "rgba(0,0,0,0.5)"
-            //         }}
-            //       />
-            //       <View
-            //         style={{
-            //           width: QR_BOX_SIZE_WIDTH,
-            //           height: QR_BOX_SIZE_HEIGHT
-            //         }}
-            //       />
-            //       <View
-            //         style={{
-            //           width: horizontalWidth,
-            //           height: horizontalHeight,
-            //           backgroundColor: "rgba(0,0,0,0.5)"
-            //         }}
-            //       />
-            //     </View>
-            //     <View
-            //       style={{
-            //         width: verticalWidth,
-            //         height: verticalHeight,
-            //         backgroundColor: "rgba(0,0,0,0.5)"
-            //       }}
-            //     />
-            //   </View>
-            // }
+                <View
+                  style={{ height: QR_BOX_SIZE_HEIGHT, flexDirection: "row" }}
+                >
+                  <View
+                    style={{
+                      width: horizontalWidth,
+                      height: horizontalHeight,
+                      backgroundColor: "rgba(0,0,0,0.8)"
+                    }}
+                  />
+                  <View
+                    style={{
+                      width: QR_BOX_SIZE_WIDTH,
+                      height: QR_BOX_SIZE_HEIGHT
+                    }}
+                  />
+                  <View
+                    style={{
+                      width: horizontalWidth,
+                      height: horizontalHeight,
+                      backgroundColor: "rgba(0,0,0,0.8)"
+                    }}
+                  />
+                </View>
+                <View
+                  style={{
+                    width: verticalWidth,
+                    height: verticalHeight,
+                    backgroundColor: "rgba(0,0,0,0.8)"
+                  }}
+                />
+              </View>
+            }
             ref={camera}
             type="back"
             style={{ flex: 6 }}
           />
-          <View
-            style={{
-              backgroundColor: colors.primary,
-              flex: 1
-            }}
-            children={
-              <TouchableOpacity
-                onPress={callApiPredict}
-                style={{
-                  alignSelf: "center",
-                  borderRadius: (width / 6) * 2,
-                  backgroundColor: colors.white,
-                  height: width / 6,
-                  aspectRatio: 1,
-                  overflow: "hidden",
-                  marginTop: "5%",
-                  borderWidth: 2,
-                  borderColor: colors.primary2
-                }}
-              />
-            }
-          />
+          {true && (
+            <View
+              style={{
+                backgroundColor: colors.primary,
+                flex: 1
+              }}
+              children={
+                <TouchableOpacity
+                  onPress={callApiPredict}
+                  style={{
+                    alignSelf: "center",
+                    borderRadius: (width / 6) * 2,
+                    backgroundColor: colors.white,
+                    height: width / 6,
+                    aspectRatio: 1,
+                    overflow: "hidden",
+                    marginTop: "5%",
+                    borderWidth: 2,
+                    borderColor: colors.primary2
+                  }}
+                />
+              }
+            />
+          )}
         </>
       }
     />

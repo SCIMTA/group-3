@@ -12,6 +12,7 @@ import FastImg from "@app/components/FastImage";
 import R from "@app/assets/R";
 import NavigationUtil from "@app/navigation/NavigationUtil";
 import { SCREEN_ROUTER_APP } from "@app/constants/Constant";
+import reactotron from "reactotron-react-native";
 
 const ItemText = ({ title, value }) => {
   return (
@@ -32,10 +33,18 @@ const ItemText = ({ title, value }) => {
 };
 
 const ResultScreen = props => {
-  const { answer } = props.navigation.state.params;
-
+  const { answer, result } = props.navigation.state.params;
+  reactotron.log(result);
+  const ma_de = result.ma_de;
+  const sbd = result.sbd;
+  const point = result.point;
+  const wrong = result.wrong || {};
   const [trueAnswer, setTrueAnswer] = useState(
-    Array.from({ length: 30 }, (v, i) => `x`)
+    Object.keys(wrong).map(key => ({
+      key,
+      correct: wrong[key].correct,
+      incorrect: wrong[key].incorrect
+    }))
   );
   useEffect(() => {}, []);
 
@@ -90,9 +99,9 @@ const ResultScreen = props => {
             style={{ marginHorizontal: 10, marginTop: 15 }}
             children="Thông tin"
           />
-          <ItemText title="Số báo danh" value="18150015" />
-          <ItemText title="Mã đề" value="001" />
-          <ItemText title="Điểm" value="7.8" />
+          <ItemText title="Số báo danh" value={sbd} />
+          <ItemText title="Mã đề" value={ma_de} />
+          <ItemText title="Điểm" value={point} />
           <WText
             font="bold18"
             color={colors.primary}
@@ -109,7 +118,7 @@ const ResultScreen = props => {
                   <>
                     <WText
                       style={{ flex: 1, textAlignVertical: "center" }}
-                      children={`Câu ${index + 1}:`}
+                      children={`Câu ${item.key}:`}
                     />
                     {[1, 2, 3, 4].map(e => (
                       <TouchableOpacity
@@ -129,15 +138,19 @@ const ResultScreen = props => {
                               textAlign: "center",
                               textAlignVertical: "center",
                               color:
-                                trueAnswer[index] == numToText(e)
+                                item.correct == numToText(e) ||
+                                item.incorrect == numToText(e)
                                   ? colors.white
                                   : "black",
                               backgroundColor:
-                                trueAnswer[index] == numToText(e)
-                                  ? colors.primary
+                                item.correct == numToText(e)
+                                  ? colors.green
+                                  : item.incorrect == numToText(e)
+                                  ? colors.red
                                   : "white",
                               borderColor:
-                                trueAnswer[index] == numToText(e)
+                                item.correct == numToText(e) ||
+                                item.incorrect == numToText(e)
                                   ? colors.primary2
                                   : "black"
                             }}

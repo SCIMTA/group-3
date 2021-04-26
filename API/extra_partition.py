@@ -11,6 +11,10 @@ def extra_partition(img):
     height = 1018
     # height = 800
 
+    h, w = img.shape
+    img = img[int(h * 0.12):int(h * 0.88), int(w * 0.15):int(w * 0.85)]
+    # cv2.imshow('', img[int(h * 0.12):int(h * 0.88), int(w * 0.15):int(w * 0.85)])
+    # cv2.waitKey()
     min_area = width / 10
     image = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 45, 35)
 
@@ -32,8 +36,7 @@ def extra_partition(img):
     for idx, box in enumerate(box_rect):
         x, y, w, h = box
         cv2.rectangle(blank_image, (x, y), (x + w, y + h), (0, 255, 0), thickness=1)
-    # cv2.imshow('image', image)
-    # cv2.imshow('blank_image', blank_image)
+
     # cv2.waitKey()
     # sắp xếp theo diện tích
     area_box = sorted(box_rect, key=lambda e: -e[2] * e[3])
@@ -66,7 +69,7 @@ def extra_partition(img):
     for idx, con in enumerate(contours):
         area = cv2.contourArea(con)
         x, y, w, h = cv2.boundingRect(con)
-        if min_area < area < width and int(w / h) < 3 and w * h - area > w * h * 0.05:
+        if min_area < area < width and int(w / h) < 2.5 and w * h - area > w * h * 0.05:
             box_rect.append((x, y, w, h))
 
     mean = int(np.mean(list(map(lambda x: x[2], box_rect))))
@@ -77,7 +80,9 @@ def extra_partition(img):
         x, y, w, h = box
         cv2.rectangle(blank_image, (x, y), (x + w, y + h), (0, 255, 0), thickness=1)
     #####
-    # cv2.imshow('', img_out)
+    # cv2.imshow('image', image)
+    # cv2.imshow('blank_image', blank_image)
+    # cv2.imshow('img_out', img_out)
     # cv2.waitKey()
 
     ##### short again
