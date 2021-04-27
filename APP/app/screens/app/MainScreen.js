@@ -15,6 +15,7 @@ import R from "@app/assets/R";
 import reactotron from "@app/reactotron/ReactotronConfig";
 import { RefreshControl } from "react-native";
 import { showOption } from "@app/utils/AlertHelper";
+import FastImg from "@app/components/FastImage";
 
 const MainScreen = props => {
   const [data, setData] = useState([]);
@@ -55,7 +56,7 @@ const MainScreen = props => {
                 let num = parseInt(text.replace(",", "").replace(".", ""));
                 if (num > 120) num = "120";
                 setNumQuestion(num);
-              }
+              } else setNumQuestion(text);
             }}
             icon={R.images.ic_num_question}
             placeholder="Số câu, ví dụ: 30, tối đa 120 câu"
@@ -70,19 +71,35 @@ const MainScreen = props => {
             style={{
               alignSelf: "center",
               width: "95%",
-              backgroundColor: colors.primary,
-              borderRadius: 5,
               margin: 10
             }}
             children={
-              <WText
-                font="bold16"
-                color={colors.white}
+              <FastImg
+                resizeMode="cover"
                 style={{
-                  textAlign: "center",
-                  padding: 15
+                  borderRadius: 5,
+                  shadowColor: "#000",
+                  shadowOffset: {
+                    width: 0,
+                    height: 12
+                  },
+                  shadowOpacity: 0.58,
+                  shadowRadius: 16.0,
+                  elevation: 8
                 }}
-                children="Tạo đề"
+                source={R.images.bg_create_item}
+                children={
+                  <WText
+                    font="bold16"
+                    color={"black"}
+                    style={{
+                      padding: 15,
+                      backgroundColor: "rgba(255,255,255,0.7)",
+                      alignSelf: "flex-start"
+                    }}
+                    children="Tạo đề"
+                  />
+                }
               />
             }
           />
@@ -123,16 +140,35 @@ const MainScreen = props => {
                   ]);
                 }}
                 style={{
-                  backgroundColor: colors.primary2,
-                  padding: 15,
-                  margin: 15,
-                  borderRadius: 5
+                  margin: 15
                 }}
                 children={
-                  <WText
-                    font="regular18"
-                    color={colors.white}
-                    children={item.title}
+                  <FastImg
+                    resizeMode="cover"
+                    source={R.images.bg_item}
+                    style={{
+                      borderRadius: 5,
+                      shadowColor: "#000",
+                      shadowOffset: {
+                        width: 0,
+                        height: 12
+                      },
+                      shadowOpacity: 0.58,
+                      shadowRadius: 16.0,
+                      elevation: 8
+                    }}
+                    children={
+                      <WText
+                        font="regular18"
+                        color={colors.white}
+                        style={{
+                          backgroundColor: "rgba(0,0,0,0.8)",
+                          padding: 15,
+                          alignSelf: "flex-start"
+                        }}
+                        children={item.title}
+                      />
+                    }
                   />
                 }
               />

@@ -1,5 +1,8 @@
 const images = {
     
+    bg_create_item: require("./images/bg_create_item.png"),
+    bg_header: require("./images/bg_header.png"),
+    bg_item: require("./images/bg_item.png"),
     ic_back: require("./images/ic_back.png"),
     ic_camera: require("./images/ic_camera.png"),
     ic_face: require("./images/ic_face.png"),

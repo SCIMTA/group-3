@@ -67,6 +67,10 @@ export default class RNHeader extends Component<Props> {
     return (
       <Header
         placement="center"
+        backgroundImage={R.images.bg_header}
+        backgroundImageStyle={{
+          opacity: 0.15
+        }}
         containerStyle={{
           backgroundColor: theme.colors.headerColor,
           borderBottomColor: theme.colors.headerColor,
@@ -79,7 +83,9 @@ export default class RNHeader extends Component<Props> {
             style={[
               {
                 fontSize: 18,
-                fontFamily: R.fonts.medium
+                fontFamily: R.fonts.medium,
+                flex: 1,
+                textAlignVertical: "center"
               },
               { color: color ? color : "white" }
             ]}
